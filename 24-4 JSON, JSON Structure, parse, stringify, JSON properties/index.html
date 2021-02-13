@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <h1>JavaScript Object Notation</h1>
+    <script>
+        const objNormal = {
+            id: 12,
+            name: "Linkon",
+            phone: 0123,
+            add:{
+                sadar: "habiganj",
+                state: "bangladesh",
+                number: 23
+            }
+        }
+        console.log("Normal OBJ",objNormal);
+        const objJASON = JSON.stringify(objNormal);
+        console.log("JSON",objJASON);
+        const objJASONobj = JSON.parse(objJASON);
+        console.log("obj jason to obj",objJASONobj);
+
+    </script>
+</body>
+</html>

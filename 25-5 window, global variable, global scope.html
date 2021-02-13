@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var name = 'Kuddus'; //global Variable 
+
+        function addNumber(num1, num2) { //global function :) 
+
+            console.log("Inside of function", name) // global variable accessing from function
+
+            var result = num1 +
+            num2; //function local variable ** without var global variable not recomonded window.result gloabal variable not recomonded
+            function doubleFUnction(num) { // local function of global function
+                const doubleTwo = num * 2;
+                return doubleTwo;
+            }
+            return result;
+        }
+        console.log("Outside of function: ", name);
+        console.log(addNumber(10, 15));
+    </script>
+</body>
+
+</html>

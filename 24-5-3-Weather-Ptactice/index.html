@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Temperature Hot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="locationInput" type="text" class="form-control"
+                    placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button id="submitBtn" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img id="image" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1><span id="location">Dhaka</span></h1>
+            <h3><span id="celcious">38.06</span>&deg;C</h3>
+            <h1 class="lead">Clouds</h1>
+        </div>
+    </div>
+    <script>
+       // const location =document.getElementById('location');
+        document.getElementById('submitBtn').addEventListener('click', function () {
+            let locationInput = document.getElementById('locationInput').value;
+            // alert(locationInput);
+            fetch(
+                    `http://api.openweathermap.org/data/2.5/weather?q=${locationInput}&appid=4c0174b10931e93aa8e3aa499a666d4e`)
+                .then(response => response.json())
+                .then(data => {
+                    const cityName = data.name;
+                    const temparature = data.main;
+                    const tempObj = temparature.temp; //`${temparature.temp}`;
+                    const celcious = ((tempObj -32) * 5) / 9;
+                    const celciousControl = celcious.toFixed(2);
+                    document.getElementById('location').innerText = cityName;
+                    document.getElementById('celcious').innerText = celciousControl;
+
+                    //console.log(data);
+
+                    const iconGet = data.weather[0];
+                    const iconAdd = iconGet.icon;
+                    console.log(iconAdd);
+
+                    const img = getElementById('image');
+                    // console.log(tempObj);
+                    // console.log(celcious);
+                    // console.log(celciousControl);
+                }
+                );
+        })
+    </script>
+</body>
+
+</html>

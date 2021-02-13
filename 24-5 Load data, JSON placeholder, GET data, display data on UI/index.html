@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON file load</title>
+</head>
+
+<body>
+    <h1>JSON BackEND</h1>
+    <ul id="user-container">
+
+    </ul>
+</body>
+<script>
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(json =>displayNames(json));  //console.log(json)); 
+
+    function displayNames(name) { //id username phone you can pass
+       const userName = name.map(user => user.name);
+       const ul = document.getElementById("user-container")
+        for (let i = 0; i < userName.length; i++) {
+            const user = userName[i];
+            const li = document.createElement("li");
+            li.innerText = user;
+            ul.appendChild(li);
+        }
+    }
+</script>
+
+</html>

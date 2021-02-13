@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who AM I</title>
+</head>
+<body>
+    <h1 style="color: red;">WHO AM I: <Span style="color: black;" id="name-of-body"></Span></h1>
+    <script>
+        fetch('https://randomuser.me/api')
+        .then(response => response.json())
+        .then(data =>{
+            const userFromArray = data.results[0];
+            const name = userFromArray.name;
+            const userName = `${name.title} ${name.first} ${name.last}`;
+            document.getElementById('name-of-body').innerText = userName;
+        })
+    </script>
+</body>
+</html>

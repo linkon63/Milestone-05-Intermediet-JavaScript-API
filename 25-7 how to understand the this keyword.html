@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+
+<body>
+    <h1>UnderStandding This</h1>
+    <p onclick="this.innerText= 'You clicked me'">
+        This is paragarph
+    </p>
+    <script>
+        const myObj = {
+            name: 'linkon',
+            getFullname: function () {
+                console.log(this);
+                return 'Mr. ' + this.name;
+            }
+        }
+        const otherObj = {
+            name: 'Abraham'
+        }
+
+        otherObj.getFullname = myObj.getFullname;
+        otherObj.getFullname();
+        myObj.getFullname();
+
+        function add(num, num1) {
+            console.log(this);
+            return num + num1;
+        }
+
+        add(10, 110);
+        otherObj.add = add();
+        otherObj.add();
+    </script>
+</body>
+
+</html>
